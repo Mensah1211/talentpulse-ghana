@@ -35,7 +35,7 @@ export async function generateChatResponse(
     }));
 
     const response = await ai.models.generateContent({
-      model: 'gemini-1.5-flash',
+      model: 'gemini-2.5-flash',
       contents,
       config: {
         systemInstruction: `You are Akua, a virtual AI Recruiter Assistant for TalentPulse Ghana.
@@ -104,7 +104,7 @@ Return a JSON array matching this structure:
 }`;
 
     const response = await ai.models.generateContent({
-      model: 'gemini-1.5-flash',
+      model: 'gemini-2.5-flash',
       contents: prompt,
       config: {
         responseMimeType: 'application/json',
@@ -231,7 +231,7 @@ Return a JSON object matching this structure exactly:
 }`;
 
     const response = await ai.models.generateContent({
-      model: 'gemini-1.5-flash',
+      model: 'gemini-2.5-flash',
       contents: [
         {
           inlineData: {
@@ -369,7 +369,7 @@ Provide exactly 2 to 4 insights.`;
     contents.push(promptContext);
 
     const response = await ai.models.generateContent({
-      model: 'gemini-1.5-flash',
+      model: 'gemini-2.5-flash',
       contents: contents,
       config: {
         responseMimeType: 'application/json',
