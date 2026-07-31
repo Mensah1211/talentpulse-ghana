@@ -440,7 +440,7 @@ export const JobBoard: React.FC<JobBoardProps> = ({
       {/* JOB DETAILS MODAL */}
       <AnimatePresence>
         {selectedJob && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 overflow-y-auto">
+          <div className="fixed inset-0 z-50 flex items-start justify-center p-4 pt-10 pb-10 overflow-y-auto">
             <motion.div 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -564,7 +564,7 @@ export const JobBoard: React.FC<JobBoardProps> = ({
       {/* APPLY FORM MODAL */}
       <AnimatePresence>
         {showApplyModal && selectedJob && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 overflow-y-auto">
+          <div className="fixed inset-0 z-50 flex items-start justify-center p-4 pt-10 pb-10 overflow-y-auto">
             <motion.div 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}

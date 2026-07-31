@@ -294,7 +294,7 @@ export const InterviewScheduler: React.FC<InterviewSchedulerProps> = ({
       {/* SCHEDULE MODAL */}
       <AnimatePresence>
         {showScheduleModal && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 overflow-y-auto">
+          <div className="fixed inset-0 z-50 flex items-start justify-center p-4 pt-10 pb-10 overflow-y-auto">
             <motion.div 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -429,7 +429,7 @@ export const InterviewScheduler: React.FC<InterviewSchedulerProps> = ({
       {/* OUTCOME MODAL */}
       <AnimatePresence>
         {selectedInterviewForOutcome && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 overflow-y-auto">
+          <div className="fixed inset-0 z-50 flex items-start justify-center p-4 pt-10 pb-10 overflow-y-auto">
             <motion.div 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
