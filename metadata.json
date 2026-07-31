@@ -1,0 +1,6 @@
+{
+  "name": "TalentPulse Ghana HR Recruitment",
+  "description": "Full-stack HR Recruitment Management system localized for Ghana with role-based access for Ghanaian job seekers and HR Admins.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

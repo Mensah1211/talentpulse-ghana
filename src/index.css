@@ -1,0 +1,41 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+@variant dark (&:where(.dark, .dark *));
+
+/* Offer Letter Print Styles */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  
+  .offer-print-container, 
+  .offer-print-container *,
+  .print-only-view,
+  .print-only-view * {
+    visibility: visible;
+  }
+  
+  .offer-print-container {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    box-shadow: none !important;
+    border: none !important;
+    background-color: white !important;
+  }
+  
+  .hide-on-print {
+    display: none !important;
+  }
+  
+  .print-only-view {
+    display: block !important;
+  }
+
+  .print-override-bg {
+    background: white !important;
+  }
+}
