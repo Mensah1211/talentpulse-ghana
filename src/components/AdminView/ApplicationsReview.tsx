@@ -54,9 +54,6 @@ export const ApplicationsReview: React.FC<ApplicationsReviewProps> = ({
   const [reviewingApp, setReviewingApp] = useState<Application | null>(null);
   const [feedbackInput, setFeedbackInput] = useState('');
   
-  // AI Match Score State
-  const [matchScore, setMatchScore] = useState<any>(null);
-  const [isGeneratingMatch, setIsGeneratingMatch] = useState(false);
   
   // Bulk selection
   const [selectedAppIds, setSelectedAppIds] = useState<string[]>([]);
@@ -157,29 +154,7 @@ export const ApplicationsReview: React.FC<ApplicationsReviewProps> = ({
     }
   };
 
-  const handleGenerateMatch = async () => {
-    if (!reviewingApp) return;
-    setIsGeneratingMatch(true);
-    setMsg('');
-    try {
-      const match = await api.generateMatchScore(
-        reviewingApp.job_id, 
-        reviewingApp.applicant_id, 
-        reviewingApp.resume_url, 
-        reviewingApp.resume_filename,
-        reviewingApp.cover_letter_url,
-        reviewingApp.cover_letter_filename
-      );
-      setMatchScore(match);
-      setMsg('AI Match Analysis complete.');
-    } catch (err: any) {
-      console.error(err);
-      alert('Failed to generate AI Match Analysis. Check console for details.');
-    } finally {
-      setIsGeneratingMatch(false);
-      setTimeout(() => setMsg(''), 3000);
-    }
-  };
+
 
   const exportToCSV = () => {
     if (filteredApps.length === 0) {
@@ -920,52 +895,7 @@ Date: _________________________`;
                     )}
                   </div>
                 </div>
-                {/* Dynamic AI Candidate Match Score */}
-                <div className="p-4 rounded-xl bg-gradient-to-r from-indigo-950/60 to-purple-950/60 border border-indigo-500/30 space-y-3">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center space-x-2">
-                      <Sparkles className="w-4 h-4 text-indigo-400 animate-pulse" />
-                      <span className="text-xs font-bold text-white">AI Candidate Resume Match Score</span>
-                    </div>
-                    {matchScore ? (
-                      <span className={`px-2.5 py-0.5 rounded-full text-[11px] font-extrabold border ${matchScore.score >= 80 ? 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30' : matchScore.score >= 50 ? 'bg-amber-500/20 text-amber-300 border-amber-500/30' : 'bg-rose-500/20 text-rose-300 border-rose-500/30'}`}>
-                        {matchScore.score}% Match
-                      </span>
-                    ) : (
-                      <button
-                        onClick={handleGenerateMatch}
-                        disabled={isGeneratingMatch}
-                        className="px-3 py-1.5 bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50 text-white rounded-lg text-xs font-semibold shadow flex items-center space-x-1.5"
-                      >
-                        {isGeneratingMatch ? (
-                          <div className="flex items-center space-x-2">
-                            <div className="w-3 h-3 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                            <span>Analyzing...</span>
-                          </div>
-                        ) : (
-                          <span>Generate Match Analysis</span>
-                        )}
-                      </button>
-                    )}
-                  </div>
 
-                  {matchScore && (
-                    <div className="grid grid-cols-1 gap-2 mt-2">
-                      {matchScore.insights.map((insight: any, idx: number) => (
-                        <div key={idx} className="flex items-start space-x-2 p-2 bg-slate-950/50 rounded-lg">
-                          {insight.type === 'positive' ? (
-                            <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-                          ) : insight.type === 'negative' ? (
-                            <XCircle className="w-4 h-4 text-rose-400 shrink-0 mt-0.5" />
-                          ) : (
-                            <Award className="w-4 h-4 text-indigo-400 shrink-0 mt-0.5" />
-                          )}
-                          <span className="text-[11px] text-slate-300 leading-relaxed">{insight.text}</span>
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                </div>
 
                 {/* HR Feedback Input */}
                 <div>
