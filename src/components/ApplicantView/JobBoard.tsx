@@ -627,7 +627,7 @@ export const JobBoard: React.FC<JobBoardProps> = ({
                     <input
                       type="file"
                       id="coverLetterUpload"
-                      accept=".pdf,.doc,.docx"
+                      accept="application/pdf"
                       onChange={handleCoverLetterUpload}
                       className="hidden"
                     />
@@ -637,7 +637,7 @@ export const JobBoard: React.FC<JobBoardProps> = ({
                         {uploadedCoverLetter ? (
                           <span className="font-semibold text-emerald-600">Attached: {uploadedCoverLetter.filename}</span>
                         ) : (
-                          <span>Click to attach Cover Letter (PDF/DOCX)</span>
+                          <span>Click to attach Cover Letter (PDF)</span>
                         )}
                       </div>
                     </label>
@@ -653,7 +653,7 @@ export const JobBoard: React.FC<JobBoardProps> = ({
                   <input
                     type="file"
                     id="resumeUpload"
-                    accept=".pdf,.doc,.docx"
+                    accept="application/pdf"
                     onChange={handleFileUpload}
                     className="hidden"
                   />

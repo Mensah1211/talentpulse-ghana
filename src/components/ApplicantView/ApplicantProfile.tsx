@@ -522,7 +522,7 @@ export const ApplicantProfileView: React.FC<ProfileProps> = ({
                     <span>{uploading ? 'Uploading...' : 'Upload New CV'}</span>
                     <input
                       type="file"
-                      accept=".pdf,.doc,.docx"
+                      accept="application/pdf"
                       onChange={handleResumeFileChange}
                       className="hidden"
                     />
